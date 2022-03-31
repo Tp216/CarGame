@@ -7,17 +7,12 @@ public class CarController : MonoBehaviour
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
 
-    Rigidbody _rigidbody;
 
     private float HorizontalInput;
     private float VerticalInput;
     private float CurrentSteeringAngle;
     private float CurrentBreakForce;
     private bool IsBreaking;
-    public AudioSource CarSound;
-    float EngineAcceleration = 10f;
-    float minEngineSound = 0f;
-    float maxEngineSound = 100f;
     
 
     [SerializeField] private float MotorForce;
@@ -37,14 +32,13 @@ public class CarController : MonoBehaviour
     [SerializeField] Transform RRWTransform;
 
 
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        CarSound.Play();
-    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.Rotate(0, 0, 90);
+        }
 
     }
     private void FixedUpdate()
