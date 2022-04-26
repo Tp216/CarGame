@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CarController : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class CarController : MonoBehaviour
     private float CurrentSteeringAngle;
     private float CurrentBreakForce;
     private bool IsBreaking;
-    
+
+    public GameObject CarChanger;
+
+    public int CollectedPoints;
+    public TextMeshProUGUI Points;
+
+
 
     [SerializeField] private float MotorForce;
     [SerializeField] private float BreakForce;
@@ -32,6 +39,11 @@ public class CarController : MonoBehaviour
     [SerializeField] Transform RRWTransform;
 
 
+    private void Start()
+    {
+        CollectedPoints = 0;
+        SetPointText();
+    }
 
     private void Update()
     {
@@ -103,4 +115,26 @@ public class CarController : MonoBehaviour
         WheelTransform.rotation = Rot;
         WheelTransform.position = Pos;
     }
+
+
+    void SetPointText()
+    {
+        Points.text = "Points: " + CollectedPoints.ToString();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Points"))
+        {
+            CollectedPoints = CollectedPoints + 1;
+            other.gameObject.SetActive(false);
+            SetPointText();
+            if (CollectedPoints >= 5)
+            {
+                CarChanger.SetActive(true);
+            }
+
+        }
+    }
+
 }
