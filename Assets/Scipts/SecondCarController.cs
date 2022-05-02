@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CarController : MonoBehaviour
+public class SecondCarController : MonoBehaviour
 {
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
@@ -15,12 +15,14 @@ public class CarController : MonoBehaviour
     private float CurrentBreakForce;
     private bool IsBreaking;
 
-    public GameObject CarChanger;
+    public CarController PointScript;
 
-    public  int CollectedPoints;
+    public AudioSource PickUp;
+
     public TextMeshProUGUI Points;
 
-    public AudioSource Pickup;
+    public int CollecteddPoints;
+    
 
     [SerializeField] private float MotorForce;
     [SerializeField] private float BreakForce;
@@ -41,7 +43,7 @@ public class CarController : MonoBehaviour
 
     public void Start()
     {
-        CollectedPoints = 0;
+        CollecteddPoints = PointScript.CollectedPoints;
         SetPointText();
     }
 
@@ -52,6 +54,7 @@ public class CarController : MonoBehaviour
             transform.Rotate(0, 0, 90);
         }
     }
+  
     private void FixedUpdate()
     {
         GetInput();
@@ -118,22 +121,17 @@ public class CarController : MonoBehaviour
 
     void SetPointText()
     {
-        Points.text = "Points: " + CollectedPoints.ToString();
+        Points.text = "Points: " + CollecteddPoints.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Points"))
         {
-            CollectedPoints = CollectedPoints + 1;
+            CollecteddPoints = CollecteddPoints + 1;
             other.gameObject.SetActive(false);
-            Pickup.Play();
             SetPointText();
-            if (CollectedPoints >= 5)
-            {
-                CarChanger.SetActive(true);
-            }
-
+            PickUp.Play();
         }
     }
 
