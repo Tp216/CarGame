@@ -22,6 +22,13 @@ public class CarController : MonoBehaviour
 
     public AudioSource Pickup;
 
+    public AudioSource EngineSource;
+    public AudioClip EngineClip;
+    public float MaxCarSpeed = 100f;
+    public float CurrentCarSpeed = 0f;
+    Rigidbody rb;
+    public static CarController cc;
+
     [SerializeField] private float MotorForce;
     [SerializeField] private float BreakForce;
     [SerializeField] private float MaxSteeringAngle;
@@ -43,6 +50,10 @@ public class CarController : MonoBehaviour
     {
         CollectedPoints = 0;
         SetPointText();
+        EngineSource = gameObject.AddComponent<AudioSource>();
+        EngineSource.clip = EngineClip;
+        EngineSource.loop = true;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -58,6 +69,7 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        CurrentCarSpeed = (rb.velocity.magnitude * 3.6f) / MaxCarSpeed;
     }
 
     private void GetInput()
