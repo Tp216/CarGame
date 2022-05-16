@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Points
   - Changer
-  - Hittable
   layers:
   - Default
   - TransparentFX
