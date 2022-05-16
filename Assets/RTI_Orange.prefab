@@ -613,6 +613,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e82ca70bf246824fb610b70d2bdf065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CarChanger: {fileID: 0}
+  CollectedPoints: 0
+  Points: {fileID: 0}
+  Pickup: {fileID: 0}
   MotorForce: 1000
   BreakForce: 3000
   MaxSteeringAngle: 30
@@ -997,5 +1001,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.002158, y: 1.3031229, z: 4.569528}
-  m_Center: {x: 0, y: 0.12973094, z: 0.1133275}
+  m_Size: {x: 2.002158, y: 1.2348049, z: 4.569528}
+  m_Center: {x: 0, y: 0.16389, z: 0.1133275}
