@@ -40,6 +40,10 @@ public class SecondCarController : MonoBehaviour
     [SerializeField] Transform RLWTransform;
     [SerializeField] Transform RRWTransform;
 
+    private float CurrentSpeed = 0f;
+    public float MaxSpeed = 50f;
+    private float Pitch = 1f;
+    public AudioSource Enginesound;
 
     public void Start()
     {
@@ -53,6 +57,11 @@ public class SecondCarController : MonoBehaviour
         {
             transform.Rotate(0, 0, 90);
         }
+
+        CurrentSpeed = transform.GetComponent<Rigidbody>().velocity.magnitude * 3.6f;
+        Pitch = CurrentSpeed / MaxSpeed;
+
+        Enginesound.pitch = Pitch;
     }
   
     private void FixedUpdate()

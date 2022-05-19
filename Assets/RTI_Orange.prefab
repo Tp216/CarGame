@@ -628,6 +628,8 @@ MonoBehaviour:
   FRWTransform: {fileID: 1955461060476462071}
   RLWTransform: {fileID: 3339396644935334196}
   RRWTransform: {fileID: 4600711264144032367}
+  MaxSpeed: 50
+  Enginesound: {fileID: 0}
 --- !u!82 &1414781315501290565
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1001,5 +1003,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.002158, y: 1.2348049, z: 4.569528}
-  m_Center: {x: 0, y: 0.16389, z: 0.1133275}
+  m_Size: {x: 2.002158, y: 1.1949972, z: 4.569528}
+  m_Center: {x: 0, y: 0.18379383, z: 0.1133275}

@@ -30,12 +30,8 @@ public class FlyCamera : MonoBehaviour
 	private float rotationX = 0.0f;
 	private float rotationY = 0.0f;
 
-	void Start ()
-	{
-		Screen.lockCursor = true;
-	}
 
-	void Update ()
+    void Update ()
 	{
 		rotationX += Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
 		rotationY += Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
@@ -64,9 +60,5 @@ public class FlyCamera : MonoBehaviour
 		if (Input.GetKey (KeyCode.Q)) {transform.position += transform.up * climbSpeed * Time.deltaTime;}
 		if (Input.GetKey (KeyCode.E)) {transform.position -= transform.up * climbSpeed * Time.deltaTime;}
 
-		if (Input.GetKeyDown (KeyCode.End))
-		{
-			Screen.lockCursor = (Screen.lockCursor == false) ? true : false;
-		}
 	}
 }

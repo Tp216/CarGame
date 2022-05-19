@@ -7,7 +7,7 @@ public class CoinRotate : MonoBehaviour
     public Vector3 RotationSpeed;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(RotationSpeed);
     }
